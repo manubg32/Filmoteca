@@ -1,0 +1,53 @@
+
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="CatalogoAvalonia.App"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+     
+    
+    <Application.Styles>
+        
+        <SimpleTheme>
+            <!-- Estilo para los textBox -->
+            <Style Selector="TextBox">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="Gray"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="MinWidth" Value="300"/>
+                <Setter Property="MaxWidth" Value="300"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Margin" Value="0,6,0,0"/>
+            </Style>
+            <!-- Estilo para los textBlock -->
+            <Style Selector="TextBlock">
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+            <!-- Estilo para los button -->
+            <Style Selector="Button">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="BorderBrush" Value="DimGray" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="CornerRadius" Value="2" />
+            </Style>
+            <!-- Estilo para cuando el raton esta sobre el button -->
+            <Style Selector="Button:pointerover">
+                <Setter Property="Background" Value="Gray" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="BorderBrush" Value="Black" />
+            </Style>
+
+            <!-- Estilo para cuando el raton esta siendo presionado -->
+            <Style Selector="Button:pressed">
+                <Setter Property="Background" Value="DimGray" />
+                <Setter Property="Foreground" Value="Black" />
+            </Style>
+        </SimpleTheme>
+    </Application.Styles>
+        
+        
+        
+             
+</Application>

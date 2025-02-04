@@ -1,0 +1,83 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ns="clr-namespace:CatalogoAvalonia.ViewModel"
+
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Width="800" Height="450"
+        x:Class="CatalogoAvalonia.View.MainView"
+        x:DataType="ns:MainViewModel"
+        Title="Catalogo"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        Icon="..\Resources\rollo.ico"
+        Closing="Window_OnClosing"
+        >
+    
+    <Window.Background>
+        <ImageBrush Source="..\Resources\fondo.png" Stretch="UniformToFill" />
+    </Window.Background>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Image Source="..\Resources\filmoteca.png" Width="200" Height="25" Margin="0, 15, 0, 0" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 0, 0, 5" IsVisible="{Binding PantallaPrincipalVisible}">
+                <TextBlock Text="[" FontSize="12" FontFamily="Bauhaus 93"/>
+                <TextBlock Text="{Binding Posicion}" FontSize="12" FontFamily="Bauhaus 93"/>
+                <TextBlock Text="/" FontSize="12" FontFamily="Bauhaus 93"/>
+                <TextBlock Text="{Binding Total}" FontSize="12" FontFamily="Bauhaus 93"/>
+                <TextBlock Text="]" FontSize="12" FontFamily="Bauhaus 93"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Command="{Binding ElegirFotoCommand}" 
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}" 
+                        IsVisible="{Binding PantallaAltaVisible}"
+                        Width="200" Height="300"  Margin="0,0,20,0">
+                    <Image Source="{Binding NuevaFoto}" Width="200" Height="300"  />
+                </Button>
+                <Image Source="{Binding Foto}" Width="200" Height="300" IsVisible="{Binding PantallaPrincipalVisible}"/>
+                <StackPanel Orientation="Vertical" Margin="10, 50, 0, 0" Spacing="30">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Título: " FontSize="24" FontFamily="Bauhaus 93" Margin="0,0,15,0" />
+                        <TextBlock Text="{Binding Titulo}" FontSize="24" Margin="0, 0, 0, 0" IsVisible="{Binding PantallaPrincipalVisible}" />
+                        <TextBox Text="{Binding NuevoTitulo}" Watermark="Escriba el título..." IsVisible="{Binding PantallaAltaVisible}" BorderBrush="{Binding BordeTitulo}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Director: " FontSize="18" FontFamily="Bauhaus 93" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding Director}" FontSize="18" Margin="0, 5, 0, 0" IsVisible="{Binding PantallaPrincipalVisible}"/>
+                        <TextBox Text="{Binding NuevoDirector}" Watermark="Escriba el Director..." IsVisible="{Binding PantallaAltaVisible}" BorderBrush="{Binding BordeDirector}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Año: " FontSize="18" FontFamily="Bauhaus 93" Margin="0,0,45,0" />
+                        <TextBlock Text="{Binding Year}" FontSize="18" Margin="0, 5, 0, 0" IsVisible="{Binding PantallaPrincipalVisible}"/>
+                        <TextBox Text="{Binding NuevoYear}" Watermark="Escriba el año..." IsVisible="{Binding PantallaAltaVisible}" BorderBrush="{Binding BordeYear}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Duración: " FontSize="18" FontFamily="Bauhaus 93" />
+                        <TextBlock Text="{Binding Duracion}" FontSize="18" Margin="0, 5, 0, 0" IsVisible="{Binding PantallaPrincipalVisible}"/>
+                        <TextBlock Text=" min" FontSize="18" Margin="0, 5, 0, 0" IsVisible="{Binding PantallaPrincipalVisible}" />
+                        <TextBox Text="{Binding NuevaDuracion}" Watermark="Escriba la duración en minutos..." IsVisible="{Binding PantallaAltaVisible}" BorderBrush="{Binding BordeDuracion}"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="50" Margin="0, 10, 0, 0" IsVisible="{Binding PantallaPrincipalVisible}">
+                <Button Content="&lt;-" IsEnabled="{Binding BtnAnteriorEnabled}"  Command="{Binding AnteriorCommand}" Foreground="Black"/>
+                <Button Content="-&gt;" IsEnabled="{Binding BtnSiguienteEnabled}" Command="{Binding SiguienteCommand}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 5, 0, 0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" IsVisible="{Binding PantallaPrincipalVisible}">
+                <Button Content="Alta" Margin="300, 0, 20, 0" Command="{Binding AltaCommand}"/>
+                <Button Content="Eliminar" Command="{Binding EliminarCommand}" Margin="25, 0, 0, 0" IsEnabled="{Binding BtnEliminarEnabled}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" IsVisible="{Binding PantallaAltaVisible}" Margin="0,20,0,0">
+                    <Button Content="Cancelar" Command="{Binding CancelarCommand}" />
+                    <Button Content="Guardar" Command="{Binding GuardarCommand}" Margin="25, 0, 0, 0"/>
+                </StackPanel>
+                <TextBlock Text="Manuel Borrero. © 2024" HorizontalAlignment="Center" Margin="145, 5, 0, 0" IsVisible="{Binding PantallaPrincipalVisible}"/>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>
