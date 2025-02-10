@@ -10,6 +10,8 @@ public class Datos
 {
     private static Datos _instance;     //Instancia de la clase para tener solo una instancia
     private List<Pelicula> peliculas;   //Lista de peliculas real
+    
+    private string path = "../../../../peliculas.json"; //Ruta para que no se guarde el json en bin
 
     //Metodo que devuelve la lista
     public List<Pelicula> getLista()
@@ -39,13 +41,13 @@ public class Datos
     public void guardarDatos()
     {
         string json = JsonSerializer.Serialize(peliculas);
-        File.WriteAllText("peliculas.json", json);
+        File.WriteAllText(path, json);
     }
 
     //Metodo que carga los datos (la lista serializable)
     public void cargarDatos()
-    {
-        string jsonLeido = File.ReadAllText("peliculas.json");
+    {   
+        string jsonLeido = File.ReadAllText(path);
         peliculas = JsonSerializer.Deserialize<List<Pelicula>>(jsonLeido);
     }
 

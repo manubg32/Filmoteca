@@ -70,7 +70,7 @@ public partial class MainViewModel : ObservableObject
     public MainViewModel()
     {
         initComponents();                           //Inicializamos la interfaz grafica
-        //cargarPeliculas;                          //Metódo de prueba que utilizaba para cargar las peliculas directamente
+        //cargarPeliculas();                        //Metódo de prueba que utilizaba para cargar las peliculas directamente
         mostrarPrimero();                           //Mostramos el primer elemento cargado de la lista
         NuevaFoto = new Bitmap(RutaDefault);        //La foto que se muestra por defecto la cargamos
         Total = peliculas.Count;                    //Obtenemos el total de peliculas para indicar al usuario
